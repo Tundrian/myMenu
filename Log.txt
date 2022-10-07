@@ -12,5 +12,5 @@
     - Configure results from cloudinary to return data needed for Models
     - add layout and UI design for viewing a single recipe
     - add a browse screen and search functionality for recipes
-    - Add a button to add recipes locall
+    - Add a button to add recipes local
     - then begin on the backend models, controllers, and routes (API only)
