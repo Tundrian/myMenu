@@ -1,0 +1,16 @@
+2022-10-07: 
+  - Completed template setup of fullstack, express/EJS application with passport authentication
+  - Installed Next JS with TypeScript and Tailwind configuration
+  - Validate separate components running successfully
+  - Configured ENV file with Cloudinary keys, port #, and MongoDB connection string
+  - Pushed initial project to Github
+  - Next steps are:
+    - to replicate template frontend in NextJS and validate functionality
+    - Following that, mapping out and adding Database Models
+    - Validate pulling data from spoonacular
+    - Cache data from spoonacular into localstorage to reduce API requests
+    - Configure results from cloudinary to return data needed for Models
+    - add layout and UI design for viewing a single recipe
+    - add a browse screen and search functionality for recipes
+    - Add a button to add recipes locall
+    - then begin on the backend models, controllers, and routes (API only)
