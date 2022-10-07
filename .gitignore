@@ -1,0 +1,4 @@
+node_modules
+.env
+./backedn/node_modules
+*/node_modules
