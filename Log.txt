@@ -14,3 +14,179 @@
     - add a browse screen and search functionality for recipes
     - Add a button to add recipes local
     - then begin on the backend models, controllers, and routes (API only)
+
+**************************************************************************************
+Spash screen
+	Hero
+		- Title
+		- blurb
+		- call to action
+		- iamge
+
+	Features
+		- Browse
+		- my menus
+		- add menus to clanedar
+		- add to breakfast, lunch, dinner, late night snack
+		- show recipe, picture, ingredients, steps, link to video, prep time
+
+Add recipe
+	- upload image
+	- choose title
+	- add ingredients
+
+Screens
+	Splash
+	Browse Recipes
+	Add Recipe
+	My Recipes
+	My Menu
+	Browse Menus
+
+- Each user will have a "public" menu
+- On the user model, user will have a friends list (list of ids of friends)
+- Friends page/view
+	- add friend by email
+		- controller searches for that email in database
+		- if found, then add each friend to each other's list, with status requested
+		- in the view, show these friends as yellow with a button to accept and one to decline on the friend who was sent the request.
+			- on accept, change status of each other to active
+			- on decline, remove friend from both lists
+			- on block, set status to block on friend who received request 
+		
+	- active friends will show as green
+	- filter out blocked friends
+
+- on clicking a friend's name, show friend's menu
+	- each menu item will have a order button
+	- on placing an order, select a date and time to place the order
+	- select a quantity of orders
+
+- On friend's page, show another tab for placed orders
+	- this will show listed, the date and times for each order placed by the friend user
+	- each will have a button to remove, or edit the quantity of the order
+- When the main user opens this page (menu -> (tab) placed orders) they will see an option to decline the order, or deliver the order. Order will assume to be delivered if past date/time
+
+
+
+User Model = {
+	id: 
+	email: 
+	name: 
+	password:
+	friends: [
+		{
+			id:
+			status: [pending, requested, active, blocked]	
+				// pending = the friend who sent request
+				// requested = the friend who is receiving the request
+		}
+	]
+}
+
+===============================
+Goal: a web application that let's you sign in, browse, and add recipes to your "menu" (profile)
+
+1. Backend authentication is done and working with current MongoDB database
+2. Create React frontend splash screen and auth screens
+3. Tie the auth screens with the backedn auth
+4. Create a new browse page to look for recipes
+5. Add functionality to add a recipe to your menu
+
+
+Day 1
+- create frontend splash screen using tailwind (basic formatting, no styling)
+- Create auth screens
+	- register
+	- login
+- create simple nav bar to nav between all screens
+- Create routes and calls to authenticate with backend auth
+
+Day 2
+- Create browse screen
+	- view
+	- nav link
+- pull data from spoonacular
+	- create search bar and api call for 10 results from spoonacular
+- cache data from spoonacular using localstorage
+- Add react router for page navigation
+- Create menu screen
+	- shows user name
+	- shows section for my recipes
+
+Day 3
+- create recipe collection
+	- id
+	- name
+	- description
+	- image
+	- mealtime
+- create recipe model
+- create recipe controller
+	- CRUD
+- create recipe API routes
+
+Day 4
+- add recipes to menu section of profile page
+	- name, description, image, mealtime
+- Add crud calls on view page
+	- add button on browse screen
+	- delete button on menu screen
+	- edit button on menu screen
+	- editable form on menu screen
+
+Day 5
+- add dropdown button to add menu to specific category
+	- show breakfast, lunch, dinner
+	- for each, add that data to the api body
+- add basic styling
+	- navbar
+	- splash screen
+	- auth forms
+	- browse screen
+	- my menu screen
+
+Day 6
+- add friends view 
+	- list friends
+	- add firend by email
+- add friends controller
+- add friends routes
+- validate friends crud calls and display in view
+- style friends in view
+
+Day 7
+- Add order view
+- Add buttons view to place an order
+- add order Model
+	{
+		id
+		date
+		time
+		ownerId
+		requestorId
+		recipe
+	}
+- add order controlelr
+- add order routes
+
+Day 8
+- add buttons to order page to remove or edit orders
+- validate order process from user and from friend
+- style order page
+
+Day 9
+- Handle updating orders automatically on date range and user IDs
+- filter out data by user/date/day, etc. where relevant
+
+Day 10 MVC complete
+
+Bonusfeatures
+	- add nutrition info
+	- add tags to recipes
+	- allow custom recipe (form/view)
+	- cache or store entire spoonacular DB for fewer API calls
+	- show menue nutrition information
+	- show menu / recipe groceries required (for the week)
+	- show weekly menu
+
