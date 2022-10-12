@@ -2,6 +2,7 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 
+// Can delete (but delete references)
 exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect("/profile");
@@ -46,7 +47,7 @@ exports.postLogin = (req, res, next) => {
 
 exports.logout = (req, res) => {
   req.logout(() => {
-    console.log('User has logged out.')
+    // console.log('User has logged out.')
   })
   req.session.destroy((err) => {
     if (err)
@@ -66,6 +67,7 @@ exports.getSignup = (req, res) => {
 };
 
 exports.postSignup = (req, res, next) => {
+  console.log(req.body)
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
     validationErrors.push({ msg: "Please enter a valid email address." });
@@ -78,7 +80,7 @@ exports.postSignup = (req, res, next) => {
 
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
-    return res.redirect("../signup");
+    return res.send("error 1");
   }
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
@@ -100,7 +102,8 @@ exports.postSignup = (req, res, next) => {
         req.flash("errors", {
           msg: "Account with that email address or username already exists.",
         });
-        return res.redirect("../signup");
+        // return res.redirect("../signup");
+        return res.send('error 2')
       }
       user.save((err) => {
         if (err) {
@@ -110,7 +113,8 @@ exports.postSignup = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect("/profile");
+          // res.redirect("/profile");
+          return res.send('logged in')
         });
       });
     }

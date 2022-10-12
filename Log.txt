@@ -1,3 +1,8 @@
+Open Issues:
+	- update nodeJS backed for login and register to return error message on invalid request
+	- add react router to navigate between pages instead of hacky way using now
+	- display error messages on view when invalid login/register request is made
+
 2022-10-07: 
   - Completed template setup of fullstack, express/EJS application with passport authentication
   - Installed Next JS with TypeScript and Tailwind configuration
@@ -14,6 +19,13 @@
     - add a browse screen and search functionality for recipes
     - Add a button to add recipes local
     - then begin on the backend models, controllers, and routes (API only)
+
+2022-10-11:
+	- create React splash, nav, login, and register views
+
+2022-10-12:
+	- created and validate registration form from client to server
+	- noted changes to be made
 
 **************************************************************************************
 Spash screen
@@ -66,8 +78,6 @@ Screens
 	- this will show listed, the date and times for each order placed by the friend user
 	- each will have a button to remove, or edit the quantity of the order
 - When the main user opens this page (menu -> (tab) placed orders) they will see an option to decline the order, or deliver the order. Order will assume to be delivered if past date/time
-
-
 
 User Model = {
 	id: 
