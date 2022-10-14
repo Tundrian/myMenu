@@ -16,7 +16,7 @@ function Register() {
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
-    console.log(user)
+    // console.log(user)
     const fetched = await fetch(`http://localhost:8000/signup/`, {
       method: 'POST',
       body: JSON.stringify(user),

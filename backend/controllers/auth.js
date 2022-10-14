@@ -71,27 +71,32 @@ exports.postSignup = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
     validationErrors.push({ msg: "Please enter a valid email address." });
+    console.log('1')
   if (!validator.isLength(req.body.password, { min: 8 }))
     validationErrors.push({
       msg: "Password must be at least 8 characters long",
     });
+    console.log('2')
   if (req.body.password !== req.body.confirmPassword)
     validationErrors.push({ msg: "Passwords do not match" });
 
   if (validationErrors.length) {
-    req.flash("errors", validationErrors);
-    return res.send("error 1");
+    // req.flash("errors", validationErrors);
+    console.log('3')
+    res.status(403, validationErrors);
+    
   }
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
   });
+  console.log('4')
 
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
   });
-
+  console.log('before findOne')
   User.findOne(
     { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
     (err, existingUser) => {
@@ -99,11 +104,12 @@ exports.postSignup = (req, res, next) => {
         return next(err);
       }
       if (existingUser) {
-        req.flash("errors", {
-          msg: "Account with that email address or username already exists.",
-        });
+          return res.send({msg: "Account with that email address or username already exists." })
+        // req.flash("errors", {
+        //   msg: "Account with that email address or username already exists.",
+        // });
         // return res.redirect("../signup");
-        return res.send('error 2')
+        // return res.send('error 2')
       }
       user.save((err) => {
         if (err) {
@@ -114,7 +120,7 @@ exports.postSignup = (req, res, next) => {
             return next(err);
           }
           // res.redirect("/profile");
-          return res.send('logged in')
+          return res.status(201)
         });
       });
     }
