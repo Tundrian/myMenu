@@ -1,26 +1,13 @@
-import {useState} from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Login from "./pages/Login";
-import Register from "./pages/Register";
 import Footer from './components/Footer';
+import { Outlet } from 'react-router-dom';
 function App() {
-
-  const [page, setPage] = useState<string>('/')
-
-  
 
   return (
     <div >
-      <Navbar updatePage={setPage}/>
-      {page === '/' ? (
-        <Home />
-      ) : page === 'login' ? ( 
-        <Login />
-      ) : page === 'register' ? (
-        <Register />
-      ) : ''}
+      <Navbar />
+      <Outlet />
       <Footer />
     </div>
   );
