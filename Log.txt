@@ -105,21 +105,21 @@ Goal: a web application that let's you sign in, browse, and add recipes to your 
 
 
 Day 1
-- create frontend splash screen using tailwind (basic formatting, no styling)
-- Create auth screens
-	- register
-	- login
-- create simple nav bar to nav between all screens
-- Create routes and calls to authenticate with backend auth
+X - create frontend splash screen using tailwind (basic formatting, no styling)
+X - Create auth screens
+X 	- register
+X 	- login
+X - create simple nav bar to nav between all screens
+X - Create routes and calls to authenticate with backend auth
 
 Day 2
-- Create browse screen
-	- view
-	- nav link
+X - Create browse screen
+X 	- view
+X 	- nav link
 - pull data from spoonacular
 	- create search bar and api call for 10 results from spoonacular
 - cache data from spoonacular using localstorage
-- Add react router for page navigation
+X - Add react router for page navigation
 - Create menu screen
 	- shows user name
 	- shows section for my recipes
