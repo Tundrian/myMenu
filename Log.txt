@@ -27,6 +27,8 @@ Open Issues:
 	- created and validate registration form from client to server
 	- noted changes to be made
 
+2022-10-14:
+	- 
 **************************************************************************************
 Spash screen
 	Hero
