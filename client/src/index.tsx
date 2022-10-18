@@ -11,6 +11,8 @@ import ErrorPage from './pages/error-page'
 import Login from './pages/Login'
 import Register from './pages/Register';
 import Home from './pages/Home';
+import Browse from './pages/Browse';
+import Menu from './pages/Menu';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <Home />
+      },
+      {
+        path: "browse",
+        element: <Browse />
+      },
+      {
+        path: "menu",
+        element: <Menu />
       },
     ]
   }

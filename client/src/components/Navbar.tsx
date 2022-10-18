@@ -9,6 +9,8 @@ function Navbar( ) {
           <li><NavLink to={`home`} className={({isActive, isPending}) => isActive ? "border-b border-b-green-500 bg-slate-500 text-white px-5 rounded-md py-1" : "border-b border-b-gray-800 px-5 py-1"}>Home</NavLink></li>
           <li><NavLink to={`login`} className={({isActive, isPending}) => isActive ? "border-b border-b-green-500 bg-slate-500 text-white px-5 rounded-md py-1" : "border-b border-b-gray-800 px-5 py-1"}>Login</NavLink></li>
           <li><NavLink to={`register`} className={({isActive, isPending}) => isActive ? "border-b border-b-green-500 bg-slate-500 text-white px-5 rounded-md py-1" : "border-b border-b-gray-800 px-5 py-1"}>Register</NavLink></li>
+          <li><NavLink to={`browse`} className={({isActive, isPending}) => isActive ? "border-b border-b-green-500 bg-slate-500 text-white px-5 rounded-md py-1" : "border-b border-b-gray-800 px-5 py-1"}>Browse</NavLink></li>
+          <li><NavLink to={`menu`} className={({isActive, isPending}) => isActive ? "border-b border-b-green-500 bg-slate-500 text-white px-5 rounded-md py-1" : "border-b border-b-gray-800 px-5 py-1"}>Menu</NavLink></li>
         </ul>
       </nav>
     </div>
