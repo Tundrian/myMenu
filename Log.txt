@@ -119,8 +119,8 @@ X - Create browse screen
 X 	- view
 X 	- nav link
 X - pull data from spoonacular
-	- create search bar and api call for 10 results from spoonacular
-- cache data from spoonacular using localstorage
+X	- create search bar and api call for 10 results from spoonacular
+X- cache data from spoonacular using localstorage
 X - Add react router for page navigation
 - Create menu screen
 	- shows user name
