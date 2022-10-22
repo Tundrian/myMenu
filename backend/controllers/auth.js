@@ -5,11 +5,14 @@ const User = require("../models/User");
 // Can delete (but delete references)
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect("/profile");
+    // return res.redirect("/profile");
+    console.log('login: ', req.user)
+    return res.status(201).send(req.user)
   }
-  res.render("login", {
-    title: "Login",
-  });
+  // res.render("login", {
+  //   title: "Login",
+  // });
+  return res.status(404)
 };
 
 exports.postLogin = (req, res, next) => {
@@ -53,7 +56,8 @@ exports.logout = (req, res) => {
     if (err)
       console.log("Error : Failed to destroy the session during logout.", err);
     req.user = null;
-    res.redirect("/");
+    console.log('logout')
+    return res.status(201)
   });
 };
 
@@ -68,30 +72,23 @@ exports.getSignup = (req, res) => {
 
 exports.postSignup = (req, res, next) => {
 
-  // console.log(req.body)
-
   const validationErrors = [];
 
   if (!validator.isEmail(req.body.email)){
-    // console.log("Please enter a valid email address.")
     validationErrors.push({ msg: "Please enter a valid email address." });
   }
 
   if (!validator.isLength(req.body.password, { min: 8 })){
-    // console.log("Password must be at least 8 characters long")
     validationErrors.push({
       msg: "Password must be at least 8 characters long",
     });
   }
     
   if (req.body.password !== req.body.confirmPassword){
-    // console.log("Passwords do not match")
     validationErrors.push({ msg: "Passwords do not match" });
   }
 
   if (validationErrors.length) {
-    // req.flash("errors", validationErrors);
-    // console.log('validation errors: ', validationErrors)
     res.status(403).send(validationErrors);
     return
   }
@@ -99,8 +96,6 @@ exports.postSignup = (req, res, next) => {
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
   });
-
-  // console.log('Past validation')
 
   const user = new User({
     userName: req.body.userName,
@@ -112,31 +107,22 @@ exports.postSignup = (req, res, next) => {
     { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
     (err, existingUser) => {
       if (err) {
-        // console.log('Error on finding an existing user:  ', err)
         return next(err);
       }
       if (existingUser) {
-        // console.log("Account with that email address or username already exists." )
+        console.log(existingUser, req.body.userName)
           return res.send({msg: "Account with that email address or username already exists." })
-        // req.flash("errors", {
-        //   msg: "Account with that email address or username already exists.",
-        // });
-        // return res.redirect("../signup");
-        // return res.send('error 2')
       }
       user.save((err) => {
         if (err) {
-          // console.log('Error on saving user: ', err)
           return next(err);
         }
         req.logIn(user, (err) => {
           if (err) {
-            // console.log('Error on logging in user: ', err)
             return next(err);
           }
-          // res.redirect("/profile");
-          // console.log('Save complete')
-          return res.status(201)
+          console.log('registered: ', user.userName)
+          return res.status(201).send(user.userName)
         });
       });
     }

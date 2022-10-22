@@ -25,14 +25,16 @@ function Register() {
       body: JSON.stringify(user),
       headers: {"Content-Type": "application/json"}
     })  
-
+    const data = await fetched.json()
+    console.log(data)
     if(!fetched.ok){
       setErr(true)
       return 
     }
     
     setErr(false)
-    // return navigate(`/home`)
+    console.log('fetched: ', fetched)
+    // localStorage.setItem('user', JSON.stringify(fetched.user))
     navigate('/home')
     
   }

@@ -10,10 +10,6 @@ function Browse() {
     getPopular()
   },[])
 
-  // useEffect(() => {
-
-  // }, search)
-
   const getPopular = async () => {
 
     const check: string= localStorage.getItem('popular') || ''

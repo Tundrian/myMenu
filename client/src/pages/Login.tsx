@@ -23,13 +23,13 @@ function Login() {
       body: JSON.stringify(user),
       headers: {"Content-Type": "application/json"}
     })  
-
     if(!fetched.ok){
       setErr(true)
       return 
     }
-    
     setErr(false)
+
+    
     // return navigate(`/home`)
     navigate('/home')
     

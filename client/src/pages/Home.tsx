@@ -1,4 +1,17 @@
+import { useEffect } from 'react'
+
 function Home() {
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+  const getUser = async() => {
+    const fetchUser = await fetch(`http://localhost:8000/login/`)
+    const data = await fetchUser.json()
+    console.log('login: ', data)
+  }
+
   return (
     <div className="bg-[url('splash.jpg')] h-screen bg-cover">
       {/* <img src="splash.jpg" alt="placeholder splash image" /> */}
