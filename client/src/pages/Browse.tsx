@@ -39,6 +39,8 @@ function Browse() {
     setSearch(e.target.value)
   }
 
+  
+
   return (
     <div>
       <h1>Browse</h1>
