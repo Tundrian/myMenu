@@ -42,19 +42,23 @@ function Browse() {
   
 
   return (
-    <div>
-      <h1>Browse</h1>
-      <form onSubmit={formSubmit}>
-        <input className="border border-slate-900" value={search} onChange={handleSearchChange} />
+    <div className="w-screen h-full m-5 flex flex-col justify-center align-middle">
+      <h1 className="text-center text-2xl">Browse</h1>
+      <form className="w-fit" onSubmit={formSubmit}>
+        <input className="border border-slate-900 rounded " value={search} onChange={handleSearchChange} />
         <button className="rounded-md py-1 px-4 bg-lime-300 mx-5" type="submit">Search</button>
       </form>
+      <div className="flex flex-row justify-between flex-wrap">
       {popular && popular.map(recipe => {
         return(
-          <div key={recipe.id}>
-            <p>{recipe.title}</p>
+          <div className=" w-1/3 h-fit p-5 border border-gray-900 m-5" key={recipe.id}>
+            <p className="text-slate-900">{recipe.title}</p>
+            <img src={recipe.image} alt="" />
+            <p>{recipe.summary.substring(0,100)}</p>
           </div>
         )
       })}
+      </div>
       <hr />
       {sRecipes && sRecipes.map(recipe => {
         return(

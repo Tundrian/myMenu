@@ -9,7 +9,7 @@ function Navbar( ) {
   }
 
   return (
-    <div className="sticky top-0 z-50 py-2 shadow-lg"> 
+    <div className="sticky top-0 z-50 py-2 shadow-lg bg-white"> 
       <nav className="flex mx-5">
         <img className="h-6 aspect-square"  src="logo192.png" />
         <ul className="w-4/5 flex justify-around flex-row">

@@ -127,16 +127,16 @@ X - Add react router for page navigation
 	- shows section for my recipes
 
 Day 3
-- create recipe collection
-	- id
-	- name
-	- description
-	- image
-	- mealtime
-- create recipe model
-- create recipe controller
-	- CRUD
-- create recipe API routes
+X- create recipe collection
+X	- id
+X	- name
+X	- description
+X	- image
+X	- mealtime
+X- create recipe model
+X- create recipe controller
+X	- CRUD
+X- create recipe API routes
 
 Day 4
 - add recipes to menu section of profile page
